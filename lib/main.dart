@@ -29,6 +29,26 @@ class CryptoInputField extends StatefulWidget {
 
 class _CryptoInputFieldState extends State<CryptoInputField> {
   String _cryptoName = '';
+  String _cryptoIcon = '❓';
+
+  void _updateCryptoIcon(String name) {
+    setState(() {
+      _cryptoName = name;
+      switch (name.toLowerCase()) {
+        case 'bitcoin':
+          _cryptoIcon = '₿';
+          break;
+        case 'ethereum':
+          _cryptoIcon = 'Ξ';
+          break;
+        case 'dogecoin':
+          _cryptoIcon = 'Ð';
+          break;
+        default:
+          _cryptoIcon = '❓';
+      }
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -39,18 +59,15 @@ class _CryptoInputFieldState extends State<CryptoInputField> {
         children: <Widget>[
           const Text('Enter Cryptocurrency Name:'),
           TextField(
-            onChanged: (value) {
-              setState(() {
-                _cryptoName = value;
-              });
-            },
+            onChanged: _updateCryptoIcon,
             decoration: const InputDecoration(
               border: OutlineInputBorder(),
               labelText: 'Cryptocurrency',
             ),
           ),
           const SizedBox(height: 20),
-          Text('You entered: $_cryptoName'),
+          Text('$_cryptoIcon', style: const TextStyle(fontSize: 100)),
+          Text('$_cryptoName', style: const TextStyle(fontSize: 24)),
         ],
       ),
     );
