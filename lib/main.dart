@@ -57,9 +57,12 @@ class _CryptoInputFieldState extends State<CryptoInputField> {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
-          const Text(
-            'Enter Cryptocurrency Name:',
-            style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+          const Padding(
+            padding: EdgeInsets.all(16.0),
+            child: const Text(
+              'Enter Cryptocurrency Name:',
+              style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+            ),
           ),
           TextField(
             onChanged: _updateCryptoIcon,
@@ -77,8 +80,13 @@ class _CryptoInputFieldState extends State<CryptoInputField> {
             style: const TextStyle(fontSize: 100, color: Colors.orangeAccent),
           ),
           Text(
-            _cryptoName.isEmpty ? 'No cryptocurrency entered' : _cryptoName,
-            style: const TextStyle(fontSize: 24, fontStyle: FontStyle.italic),
+            _cryptoName.isEmpty
+                ? 'No cryptocurrency entered'
+                : _cryptoName.toUpperCase(),
+            style: const TextStyle(
+                fontSize: 24,
+                fontStyle: FontStyle.normal,
+                color: Color.fromRGBO(100, 100, 100, 0.5)),
           ),
         ],
       ),
