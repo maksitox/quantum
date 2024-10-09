@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'screens/login_screen.dart';
 import 'screens/registration_screen.dart';
 import 'screens/profile_screen.dart';
+import 'screens/main_wallet_screen.dart';
 
 void main() {
   runApp(const MainApp());
@@ -19,11 +20,12 @@ class MainApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.orange,
       ),
-      home: const LoginScreen(),
+      initialRoute: '/login',
       routes: {
         '/login': (context) => const LoginScreen(),
         '/register': (context) => const RegistrationScreen(),
         '/profile': (context) => ProfileScreen(),
+        '/main_wallet': (context) => MainWalletScreen(),
       },
     );
   }

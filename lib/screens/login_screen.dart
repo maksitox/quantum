@@ -4,8 +4,6 @@ import 'package:flutter/material.dart';
 import '../widgets/logo_widget.dart';
 import '../widgets/custom_text_field.dart';
 import '../widgets/custom_button.dart';
-import 'registration_screen.dart';
-import 'profile_screen.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({Key? key}) : super(key: key);
@@ -20,27 +18,20 @@ class _LoginScreenState extends State<LoginScreen> {
 
   void _handleLogin() {
     // Handle login logic here
-    // For now, just print the values
-    print('Email: ${_emailController.text}');
-    print('Password: ${_passwordController.text}');
-    Navigator.push<void>(
-      context,
-      MaterialPageRoute<void>(builder: (context) => ProfileScreen()),
-    );
+    // For now, just navigate to MainWalletScreen
+    Navigator.pushNamed(context, '/main_wallet');
   }
 
   void _navigateToRegister() {
     // Navigate to Registration screen
-    Navigator.push<void>(
-      context,
-      MaterialPageRoute<void>(builder: (context) => const RegistrationScreen()),
-    );
+    Navigator.pushNamed(context, '/register');
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        automaticallyImplyLeading: false,
         title: const Text('Login'),
       ),
       body: SingleChildScrollView(
