@@ -6,6 +6,7 @@ class CustomTextField extends StatelessWidget {
   final String label;
   final TextEditingController controller;
   final bool isPassword;
+  final IconData icon;
   final ValueChanged<String>? onChanged;
 
   const CustomTextField({
@@ -13,6 +14,7 @@ class CustomTextField extends StatelessWidget {
     required this.label,
     required this.controller,
     this.isPassword = false,
+    this.icon = Icons.text_fields,
     this.onChanged,
   }) : super(key: key);
 
@@ -27,9 +29,7 @@ class CustomTextField extends StatelessWidget {
           borderRadius: BorderRadius.circular(10),
         ),
         labelText: label,
-        prefixIcon: isPassword
-            ? const Icon(Icons.lock)
-            : const Icon(Icons.account_balance_wallet),
+        prefixIcon: Icon(icon),
       ),
     );
   }
