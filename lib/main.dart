@@ -1,10 +1,7 @@
 // lib/main.dart
 
 import 'package:flutter/material.dart';
-import 'screens/login_screen.dart';
-import 'screens/registration_screen.dart';
-import 'screens/profile_screen.dart';
-import 'screens/main_wallet_screen.dart';
+import 'package:quantum/routes.dart';
 
 void main() {
   runApp(const MainApp());
@@ -21,12 +18,7 @@ class MainApp extends StatelessWidget {
         primarySwatch: Colors.orange,
       ),
       initialRoute: '/login',
-      routes: {
-        '/login': (context) => const LoginScreen(),
-        '/register': (context) => const RegistrationScreen(),
-        '/profile': (context) => ProfileScreen(),
-        '/main_wallet': (context) => MainWalletScreen(),
-      },
+      routes: appRoutes,
     );
   }
 }

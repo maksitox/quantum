@@ -19,7 +19,7 @@ class _LoginScreenState extends State<LoginScreen> {
   void _handleLogin() {
     // Handle login logic here
     // For now, just navigate to MainWalletScreen
-    Navigator.pushNamed(context, '/main_wallet');
+    Navigator.pushNamed(context, '/main');
   }
 
   void _navigateToRegister() {
