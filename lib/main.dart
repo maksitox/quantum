@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'widgets/custom_button.dart';
 import 'widgets/custom_text_field.dart';
 import 'widgets/logo_widget.dart';
+import 'widgets/crypto_card.dart';
 
 void main() {
   runApp(const MainApp());
@@ -34,6 +35,8 @@ class CryptoInputField extends StatefulWidget {
 
 class _CryptoInputFieldState extends State<CryptoInputField> {
   String _cryptoName = '';
+  String _cryptoSymbol = '';
+  double _cryptoAmount = 0.0;
   String _cryptoIcon = '❓';
   final TextEditingController _controller = TextEditingController();
 
@@ -43,15 +46,23 @@ class _CryptoInputFieldState extends State<CryptoInputField> {
       switch (name.toLowerCase()) {
         case 'bitcoin':
           _cryptoIcon = '₿';
+          _cryptoSymbol = 'BTC';
+          _cryptoAmount = 1.5;
           break;
         case 'ethereum':
           _cryptoIcon = 'Ξ';
+          _cryptoSymbol = 'ETH';
+          _cryptoAmount = 10.0;
           break;
         case 'dogecoin':
           _cryptoIcon = 'Ð';
+          _cryptoSymbol = 'DOGE';
+          _cryptoAmount = 5000.0;
           break;
         default:
           _cryptoIcon = '❓';
+          _cryptoSymbol = '';
+          _cryptoAmount = 0.0;
       }
     });
   }
@@ -60,52 +71,56 @@ class _CryptoInputFieldState extends State<CryptoInputField> {
     setState(() {
       _cryptoName = '';
       _cryptoIcon = '❓';
+      _cryptoSymbol = '';
+      _cryptoAmount = 0.0;
       _controller.clear();
     });
   }
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.all(16.0),
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: <Widget>[
-          const LogoWidget(
-            size: 140,
-          ),
-          const Padding(
-            padding: EdgeInsets.all(16.0),
-            child: Text(
-              'Enter Cryptocurrency Name:',
-              style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+    return SingleChildScrollView(
+      child: Padding(
+        padding: const EdgeInsets.all(16.0),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            const LogoWidget(),
+            const Padding(
+              padding: EdgeInsets.all(16.0),
+              child: Text(
+                'Enter Cryptocurrency Name:',
+                style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+              ),
             ),
-          ),
-          CustomTextField(
-            label: 'Cryptocurrency',
-            controller: _controller,
-            onChanged: _updateCryptoIcon,
-          ),
-          const SizedBox(height: 20),
-          Text(
-            _cryptoIcon,
-            style: const TextStyle(fontSize: 100, color: Colors.orangeAccent),
-          ),
-          Text(
-            _cryptoName.isEmpty
-                ? 'No cryptocurrency entered'
-                : _cryptoName.toUpperCase(),
-            style: const TextStyle(
-                fontSize: 24,
-                fontStyle: FontStyle.normal,
-                color: Color.fromRGBO(100, 100, 100, 0.5)),
-          ),
-          const SizedBox(height: 20),
-          CustomButton(
-            text: 'Clear',
-            onPressed: _handleClearPress,
-          ),
-        ],
+            CustomTextField(
+              label: 'Cryptocurrency',
+              controller: _controller,
+              onChanged: _updateCryptoIcon,
+            ),
+            const SizedBox(height: 20),
+            if (_cryptoSymbol.isNotEmpty)
+              CryptoCard(
+                name: _cryptoName,
+                symbol: _cryptoSymbol,
+                icon: _cryptoIcon,
+                amount: _cryptoAmount,
+              )
+            else
+              Text(
+                'No cryptocurrency entered',
+                style: const TextStyle(
+                    fontSize: 24,
+                    fontStyle: FontStyle.normal,
+                    color: Color.fromRGBO(100, 100, 100, 0.5)),
+              ),
+            const SizedBox(height: 20),
+            CustomButton(
+              text: 'Clear',
+              onPressed: _handleClearPress,
+            ),
+          ],
+        ),
       ),
     );
   }
