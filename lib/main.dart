@@ -1,4 +1,7 @@
+// lib/main.dart
+
 import 'package:flutter/material.dart';
+import 'widgets/custom_button.dart';
 
 void main() {
   runApp(const MainApp());
@@ -14,7 +17,7 @@ class MainApp extends StatelessWidget {
         appBar: AppBar(
           title: const Text('Crypto Wallet Test App'),
         ),
-        body: const CryptoInputField(),
+        body: CryptoInputField(),
       ),
     );
   }
@@ -30,6 +33,7 @@ class CryptoInputField extends StatefulWidget {
 class _CryptoInputFieldState extends State<CryptoInputField> {
   String _cryptoName = '';
   String _cryptoIcon = '❓';
+  final TextEditingController _controller = TextEditingController();
 
   void _updateCryptoIcon(String name) {
     setState(() {
@@ -50,21 +54,30 @@ class _CryptoInputFieldState extends State<CryptoInputField> {
     });
   }
 
+  void _handleClearPress() {
+    setState(() {
+      _cryptoName = '';
+      _cryptoIcon = '❓';
+      _controller.clear();
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.all(16),
+      padding: const EdgeInsets.all(16.0),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
           const Padding(
-            padding: EdgeInsets.all(16),
+            padding: EdgeInsets.all(16.0),
             child: Text(
               'Enter Cryptocurrency Name:',
               style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
             ),
           ),
           TextField(
+            controller: _controller,
             onChanged: _updateCryptoIcon,
             decoration: InputDecoration(
               border: OutlineInputBorder(
@@ -84,10 +97,14 @@ class _CryptoInputFieldState extends State<CryptoInputField> {
                 ? 'No cryptocurrency entered'
                 : _cryptoName.toUpperCase(),
             style: const TextStyle(
-              fontSize: 24,
-              fontStyle: FontStyle.normal,
-              color: Color.fromRGBO(100, 100, 100, 0.5),
-            ),
+                fontSize: 24,
+                fontStyle: FontStyle.normal,
+                color: Color.fromRGBO(100, 100, 100, 0.5)),
+          ),
+          const SizedBox(height: 20),
+          CustomButton(
+            text: 'Clear',
+            onPressed: _handleClearPress,
           ),
         ],
       ),
