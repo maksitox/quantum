@@ -1,24 +1,24 @@
+// lib/screens/registration_screen.dart
+
 import 'package:flutter/material.dart';
-import '../widgets/logo_widget.dart';
-import '../widgets/custom_text_field.dart';
-import '../widgets/custom_button.dart';
+import 'package:quantum/widgets/custom_button.dart';
+import 'package:quantum/widgets/custom_text_field.dart';
+import 'package:quantum/widgets/logo_widget.dart';
 
 class RegistrationScreen extends StatefulWidget {
-  const RegistrationScreen({Key? key}) : super(key: key);
+  const RegistrationScreen({super.key});
 
   @override
-  _RegistrationScreenState createState() => _RegistrationScreenState();
+  RegistrationScreenState createState() => RegistrationScreenState();
 }
 
-class _RegistrationScreenState extends State<RegistrationScreen> {
+class RegistrationScreenState extends State<RegistrationScreen> {
   final TextEditingController _usernameController = TextEditingController();
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
 
   void _handleRegistration() {
-    print('Username: ${_usernameController.text}');
-    print('Email: ${_emailController.text}');
-    print('Password: ${_passwordController.text}');
+    // Handle registration logic here
   }
 
   void _navigateToLogin() {
@@ -36,89 +36,79 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
       body: Center(
         child: SingleChildScrollView(
           child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 32.0),
+            padding: const EdgeInsets.symmetric(horizontal: 32),
             child: isSmallScreen
                 ? Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       const LogoWidget(size: 100),
-                      const SizedBox(height: 24.0),
+                      const SizedBox(height: 24),
                       CustomTextField(
                         label: 'Username',
                         controller: _usernameController,
-                        isPassword: false,
                         icon: Icons.account_circle,
-                        onChanged: (value) {},
                       ),
-                      const SizedBox(height: 16.0),
+                      const SizedBox(height: 16),
                       CustomTextField(
                         label: 'Email',
                         controller: _emailController,
-                        isPassword: false,
                         icon: Icons.email,
-                        onChanged: (value) {},
                       ),
-                      const SizedBox(height: 16.0),
+                      const SizedBox(height: 16),
                       CustomTextField(
                         label: 'Password',
                         controller: _passwordController,
                         isPassword: true,
                         icon: Icons.lock,
-                        onChanged: (value) {},
                       ),
-                      const SizedBox(height: 24.0),
+                      const SizedBox(height: 24),
                       CustomButton(
                         text: 'Register',
                         onPressed: _handleRegistration,
                       ),
-                      const SizedBox(height: 16.0),
+                      const SizedBox(height: 16),
                       TextButton(
                         onPressed: _navigateToLogin,
-                        child: const Text("Already have an account? Login"),
+                        child: const Text('Already have an account? Login'),
                       ),
                     ],
                   )
                 : Container(
                     constraints: const BoxConstraints(maxWidth: 400),
-                    padding: const EdgeInsets.all(16.0),
-                    margin: const EdgeInsets.all(32.0),
+                    padding: const EdgeInsets.all(16),
+                    margin: const EdgeInsets.all(32),
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        const LogoWidget(size: 150),
-                        const SizedBox(height: 24.0),
+                        const LogoWidget(),
+                        const SizedBox(height: 24),
                         CustomTextField(
                           label: 'Username',
                           controller: _usernameController,
-                          isPassword: false,
                           icon: Icons.account_circle,
-                          onChanged: (value) {},
                         ),
-                        const SizedBox(height: 16.0),
+                        const SizedBox(height: 16),
                         CustomTextField(
                           label: 'Email',
                           controller: _emailController,
-                          isPassword: false,
                           icon: Icons.email,
-                          onChanged: (value) {},
                         ),
-                        const SizedBox(height: 16.0),
+                        const SizedBox(height: 16),
                         CustomTextField(
                           label: 'Password',
                           controller: _passwordController,
                           isPassword: true,
                           icon: Icons.lock,
-                          onChanged: (value) {},
                         ),
-                        const SizedBox(height: 24.0),
+                        const SizedBox(height: 24),
                         CustomButton(
                           text: 'Register',
                           onPressed: _handleRegistration,
                         ),
-                        const SizedBox(height: 16.0),
+                        const SizedBox(height: 16),
                         TextButton(
                           onPressed: _navigateToLogin,
-                          child: const Text("Already have an account? Login"),
+                          child: const Text('Already have an account? Login'),
                         ),
                       ],
                     ),

@@ -9,12 +9,12 @@ class CryptoCard extends StatelessWidget {
   final String icon;
 
   const CryptoCard({
-    Key? key,
     required this.name,
     required this.symbol,
     required this.amount,
     required this.icon,
-  }) : super(key: key);
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -23,17 +23,18 @@ class CryptoCard extends StatelessWidget {
         borderRadius: BorderRadius.circular(12),
       ),
       elevation: 4,
-      margin: const EdgeInsets.symmetric(vertical: 8.0, horizontal: 16.0),
+      margin: const EdgeInsets.symmetric(vertical: 8, horizontal: 16),
       child: Padding(
-        padding: const EdgeInsets.all(16.0),
+        padding: const EdgeInsets.all(16),
         child: Row(
           children: [
             Text(
               icon,
               style: const TextStyle(
-                  fontSize: 40,
-                  color: Color.fromARGB(255, 146, 107, 255),
-                  fontWeight: FontWeight.w500),
+                fontSize: 40,
+                color: Color.fromARGB(255, 146, 107, 255),
+                fontWeight: FontWeight.w500,
+              ),
             ),
             const SizedBox(width: 16),
             Expanded(

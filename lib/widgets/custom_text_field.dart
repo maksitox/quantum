@@ -10,13 +10,13 @@ class CustomTextField extends StatelessWidget {
   final ValueChanged<String>? onChanged;
 
   const CustomTextField({
-    Key? key,
     required this.label,
     required this.controller,
     this.isPassword = false,
     this.icon = Icons.text_fields,
     this.onChanged,
-  }) : super(key: key);
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context) {

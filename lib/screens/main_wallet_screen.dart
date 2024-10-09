@@ -1,10 +1,10 @@
 // lib/screens/main_wallet_screen.dart
 
 import 'package:flutter/material.dart';
-import '../widgets/crypto_card.dart';
+import 'package:quantum/widgets/crypto_card.dart';
 
 class MainWalletScreen extends StatelessWidget {
-  MainWalletScreen({Key? key}) : super(key: key);
+  MainWalletScreen({super.key});
 
   final double totalBalance = 12500.75;
   final List<Map<String, String>> cryptocurrencies = [
@@ -17,13 +17,13 @@ class MainWalletScreen extends StatelessWidget {
     {
       'name': 'Ethereum',
       'symbol': 'ETH',
-      'amount': '10.0',
+      'amount': '10',
       'icon': 'Ξ',
     },
     {
       'name': 'Dogecoin',
       'symbol': 'DOGE',
-      'amount': '5000.0',
+      'amount': '5000',
       'icon': 'Ð',
     },
   ];
@@ -50,7 +50,7 @@ class MainWalletScreen extends StatelessWidget {
         ],
       ),
       body: Padding(
-        padding: const EdgeInsets.all(16.0),
+        padding: const EdgeInsets.all(16),
         child: Column(
           children: [
             Card(
@@ -60,7 +60,7 @@ class MainWalletScreen extends StatelessWidget {
               ),
               elevation: 4,
               child: Padding(
-                padding: const EdgeInsets.all(24.0),
+                padding: const EdgeInsets.all(24),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
@@ -83,7 +83,7 @@ class MainWalletScreen extends StatelessWidget {
                 ),
               ),
             ),
-            const SizedBox(height: 24.0),
+            const SizedBox(height: 24),
             Expanded(
               child: ListView.builder(
                 itemCount: cryptocurrencies.length,
@@ -102,9 +102,9 @@ class MainWalletScreen extends StatelessWidget {
         ),
       ),
       floatingActionButton: FloatingActionButton(
+        backgroundColor: Colors.orangeAccent,
         onPressed: () => _addNewCrypto(context),
         child: const Icon(Icons.add),
-        backgroundColor: Colors.orangeAccent,
       ),
     );
   }
