@@ -19,7 +19,6 @@ class ProfileScreen extends StatelessWidget {
   }
 
   void _logOut(BuildContext context) {
-    // Log out functionality
     Navigator.push<void>(
       context,
       MaterialPageRoute<void>(builder: (context) => LoginScreen()),
@@ -28,56 +27,135 @@ class ProfileScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final bool isSmallScreen = MediaQuery.of(context).size.width < 600;
+
     return Scaffold(
       appBar: AppBar(
         title: const Text('Profile'),
       ),
-      body: Padding(
-        padding: const EdgeInsets.all(16.0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            const CircleAvatar(
-              radius: 50,
-              backgroundImage: AssetImage('lib/assets/avatar_placeholder.png'),
-            ),
-            const SizedBox(height: 16.0),
-            Text(
-              username,
-              style: const TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
-            ),
-            const SizedBox(height: 8.0),
-            Text(
-              email,
-              style: const TextStyle(fontSize: 16, color: Colors.grey),
-            ),
-            const SizedBox(height: 24.0),
-            const Text(
-              'Linked Wallets:',
-              style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
-            ),
-            const SizedBox(height: 8.0),
-            for (var wallet in linkedWallets)
-              Padding(
-                padding: const EdgeInsets.symmetric(vertical: 4.0),
-                child: Text(
-                  wallet,
-                  style: const TextStyle(fontSize: 16),
-                ),
+      body: isSmallScreen
+          ? Padding(
+              padding: const EdgeInsets.all(16.0),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  const CircleAvatar(
+                    radius: 50,
+                    backgroundImage:
+                        AssetImage('lib/assets/avatar_placeholder.png'),
+                  ),
+                  const SizedBox(height: 16.0),
+                  Text(
+                    username,
+                    style: const TextStyle(
+                        fontSize: 24, fontWeight: FontWeight.bold),
+                  ),
+                  const SizedBox(height: 8.0),
+                  Text(
+                    email,
+                    style: const TextStyle(fontSize: 16, color: Colors.grey),
+                  ),
+                  const SizedBox(height: 24.0),
+                  const Text(
+                    'Linked Wallets:',
+                    style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                  ),
+                  const SizedBox(height: 8.0),
+                  for (var wallet in linkedWallets)
+                    Padding(
+                      padding: const EdgeInsets.symmetric(vertical: 4.0),
+                      child: Text(
+                        wallet,
+                        style: const TextStyle(fontSize: 16),
+                      ),
+                    ),
+                  const SizedBox(height: 24.0),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Expanded(
+                        child: CustomButton(
+                          text: 'Edit Profile',
+                          onPressed: _editProfile,
+                        ),
+                      ),
+                      const SizedBox(width: 16.0),
+                      Expanded(
+                        child: CustomButton(
+                          text: 'Log Out',
+                          onPressed: () => _logOut(context),
+                        ),
+                      ),
+                    ],
+                  ),
+                ],
+              ))
+          : Padding(
+              padding: const EdgeInsets.all(70.0),
+              child: Row(
+                children: [
+                  Expanded(
+                    flex: 2,
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        const Text(
+                          'Linked Wallets:',
+                          style: TextStyle(
+                              fontSize: 18, fontWeight: FontWeight.bold),
+                        ),
+                        const SizedBox(height: 8.0),
+                        for (var wallet in linkedWallets)
+                          Padding(
+                            padding: const EdgeInsets.symmetric(vertical: 4.0),
+                            child: Text(
+                              wallet,
+                              style: const TextStyle(fontSize: 16),
+                            ),
+                          ),
+                      ],
+                    ),
+                  ),
+                  const SizedBox(width: 32.0),
+                  Expanded(
+                    flex: 1,
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        const CircleAvatar(
+                          radius: 50,
+                          backgroundImage:
+                              AssetImage('lib/assets/avatar_placeholder.png'),
+                        ),
+                        const SizedBox(height: 16.0),
+                        Text(
+                          username,
+                          style: const TextStyle(
+                              fontSize: 24, fontWeight: FontWeight.bold),
+                        ),
+                        const SizedBox(height: 8.0),
+                        Text(
+                          email,
+                          style:
+                              const TextStyle(fontSize: 16, color: Colors.grey),
+                        ),
+                        const SizedBox(height: 24.0),
+                        CustomButton(
+                          text: 'Edit Profile',
+                          onPressed: _editProfile,
+                        ),
+                        const SizedBox(
+                            height: 16.0), // Add space between buttons
+                        CustomButton(
+                          text: 'Log Out',
+                          onPressed: () => _logOut(context),
+                        ),
+                      ],
+                    ),
+                  ),
+                ],
               ),
-            const SizedBox(height: 24.0),
-            CustomButton(
-              text: 'Edit Profile',
-              onPressed: _editProfile,
             ),
-            const SizedBox(height: 16.0),
-            CustomButton(
-              text: 'Log Out',
-              onPressed: () => _logOut(context),
-            ),
-          ],
-        ),
-      ),
     );
   }
 }
