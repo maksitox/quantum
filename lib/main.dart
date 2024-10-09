@@ -3,6 +3,7 @@
 import 'package:flutter/material.dart';
 import 'widgets/custom_button.dart';
 import 'widgets/custom_text_field.dart';
+import 'widgets/logo_widget.dart';
 
 void main() {
   runApp(const MainApp());
@@ -70,6 +71,9 @@ class _CryptoInputFieldState extends State<CryptoInputField> {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
+          const LogoWidget(
+            size: 140,
+          ),
           const Padding(
             padding: EdgeInsets.all(16.0),
             child: Text(
