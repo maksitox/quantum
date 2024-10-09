@@ -2,6 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'widgets/custom_button.dart';
+import 'widgets/custom_text_field.dart';
 
 void main() {
   runApp(const MainApp());
@@ -76,16 +77,10 @@ class _CryptoInputFieldState extends State<CryptoInputField> {
               style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
             ),
           ),
-          TextField(
+          CustomTextField(
+            label: 'Cryptocurrency',
             controller: _controller,
             onChanged: _updateCryptoIcon,
-            decoration: InputDecoration(
-              border: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(10),
-              ),
-              labelText: 'Cryptocurrency',
-              prefixIcon: const Icon(Icons.account_balance_wallet),
-            ),
           ),
           const SizedBox(height: 20),
           Text(
