@@ -54,7 +54,7 @@ class MainWalletScreen extends StatelessWidget {
         child: Column(
           children: [
             Card(
-              color: Colors.orangeAccent,
+              color: Colors.deepPurpleAccent,
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(12),
               ),
@@ -102,9 +102,12 @@ class MainWalletScreen extends StatelessWidget {
         ),
       ),
       floatingActionButton: FloatingActionButton(
-        backgroundColor: Colors.orangeAccent,
+        backgroundColor: const Color.fromARGB(255, 155, 90, 253),
         onPressed: () => _addNewCrypto(context),
-        child: const Icon(Icons.add),
+        child: const Icon(
+          Icons.add,
+          color: Colors.white,
+        ),
       ),
     );
   }
