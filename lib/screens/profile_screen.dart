@@ -5,8 +5,8 @@ import 'package:quantum/screens/login_screen.dart';
 import '../widgets/custom_button.dart';
 
 class ProfileScreen extends StatelessWidget {
-  final String username = 'John Doe';
-  final String email = 'johndoe@example.com';
+  final String username = 'Oksana Sawara';
+  final String email = 'oksanasawara@gmail.com';
   final List<String> linkedWallets = [
     'BTC Wallet: 1A1zP1eP5QGefi2DMPTfTL5SLmv7DivfNa',
     'ETH Wallet: 0x32Be343B94f860124dC4fEe278FDCBD38C102D88'
@@ -20,7 +20,6 @@ class ProfileScreen extends StatelessWidget {
 
   void _logOut(BuildContext context) {
     // Log out functionality
-    // Navigator.pop(context);
     Navigator.push<void>(
       context,
       MaterialPageRoute<void>(builder: (context) => LoginScreen()),
@@ -40,8 +39,7 @@ class ProfileScreen extends StatelessWidget {
           children: [
             const CircleAvatar(
               radius: 50,
-              backgroundImage: AssetImage(
-                  'assets/avatar_placeholder.png'), // Replace with actual image
+              backgroundImage: AssetImage('lib/assets/avatar_placeholder.png'),
             ),
             const SizedBox(height: 16.0),
             Text(

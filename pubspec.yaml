@@ -1,10 +1,11 @@
 name: quantum
-description: "A new Flutter project."
-publish_to: 'none'
+description: A new Flutter project.
+
+publish_to: none
 version: 0.1.0
 
 environment:
-  sdk: ^3.5.3
+  sdk: ">=3.5.3 <4.0.0"
 
 dependencies:
   flutter:
@@ -19,3 +20,5 @@ dev_dependencies:
 
 flutter:
   uses-material-design: true
+  assets:
+    - lib/assets/avatar_placeholder.png
