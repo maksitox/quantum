@@ -5,6 +5,7 @@ import '../widgets/logo_widget.dart';
 import '../widgets/custom_text_field.dart';
 import '../widgets/custom_button.dart';
 import 'registration_screen.dart';
+import 'profile_screen.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({Key? key}) : super(key: key);
@@ -22,6 +23,10 @@ class _LoginScreenState extends State<LoginScreen> {
     // For now, just print the values
     print('Email: ${_emailController.text}');
     print('Password: ${_passwordController.text}');
+    Navigator.push<void>(
+      context,
+      MaterialPageRoute<void>(builder: (context) => ProfileScreen()),
+    );
   }
 
   void _navigateToRegister() {
