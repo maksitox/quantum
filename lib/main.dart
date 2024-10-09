@@ -12,9 +12,9 @@ class MainApp extends StatelessWidget {
     return MaterialApp(
       home: Scaffold(
         appBar: AppBar(
-          title: Text('Crypto Wallet Test App'),
+          title: const Text('Crypto Wallet Test App'),
         ),
-        body: CryptoInputField(),
+        body: const CryptoInputField(),
       ),
     );
   }
@@ -53,13 +53,13 @@ class _CryptoInputFieldState extends State<CryptoInputField> {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.all(16.0),
+      padding: const EdgeInsets.all(16),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
           const Padding(
-            padding: EdgeInsets.all(16.0),
-            child: const Text(
+            padding: EdgeInsets.all(16),
+            child: Text(
               'Enter Cryptocurrency Name:',
               style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
             ),
@@ -84,9 +84,10 @@ class _CryptoInputFieldState extends State<CryptoInputField> {
                 ? 'No cryptocurrency entered'
                 : _cryptoName.toUpperCase(),
             style: const TextStyle(
-                fontSize: 24,
-                fontStyle: FontStyle.normal,
-                color: Color.fromRGBO(100, 100, 100, 0.5)),
+              fontSize: 24,
+              fontStyle: FontStyle.normal,
+              color: Color.fromRGBO(100, 100, 100, 0.5),
+            ),
           ),
         ],
       ),
